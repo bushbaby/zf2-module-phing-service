@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="PhingService Demo Project" default="build" description="Buildfile to demonstrate PhingService usage">
+
+    <!-- ============================================  -->
+    <!-- Target: show_defaults                         -->
+    <!-- ============================================  -->
+    <target name="show-defaults">
+        <echo>
+Built-In Properties
+
+application.startdir	Current work directory
+                        ${application.startdir}
+
+env.*                   Environment variables, extracted from $_SERVER.
+env.PHP_COMMAND         ${env.PHP_COMMAND}
+env.PHING_HOME          ${env.PHING_HOME}
+env.PHP_CLASSPATH       ${env.PHP_CLASSPATH}
+env.PATH                ${env.PATH}
+
+host.arch               System architecture, i.e. i586. Not available on Windows machines.
+                        ${host.arch}
+
+host.domain             DNS domain name, i.e. php.net. Not available on Windows machines.
+                        ${host.domain}
+
+host.fstype             The type of the filesystem. Possible values are UNIX, WINNT and WIN32
+                        ${host.fstype}
+
+host.name               Operating System hostname as returned by posix_uname(). Not available on Windows machines.
+                        ${host.name}
+
+host.os                 Operating System description as set in PHP_OS variable (see PHP Manual).
+                        ${host.os}
+
+host.os.release         Operating version release, i.e. 2.2.10. Not available on Windows machines.
+                        ${host.os.release}
+
+host.os.version         Operating system version, i.e. #4 Tue Jul 20 17:01:36 MEST 1999. Not available on Windows machines.
+                        ${host.os.version}
+
+line.separator          Character(s) that signal the end of a line, "\n" for Linux, "\r\n" for Windows system, "\r" for Macintosh.
+                        ${line.separator}
+
+os.name                 Operating System description as set in PHP_OS variable.
+                        ${os.name}
+
+phing.file              Full path to current buildfile.
+                        ${phing.file}
+
+phing.home              Phing installation directory, not set in PEAR installations.
+                        ${phing.home}
+
+phing.version           Current Phing version.
+                        ${phing.version}
+
+phing.project.name	Name of the currently processed project.
+                        ${phing.project.name}
+
+php.classpath           The value of the environment variable PHP_CLASSPATH.
+                        ${php.classpath}
+
+php.version             Version of the PHP interpreter. Same as PHP constant PHP_VERSION (see PHP Manual).
+                        ${php.version}
+
+project.basedir         The current project basedir.
+                        ${project.basedir}
+
+user.home               Value of the environment variable HOME.
+                        ${user.home}
+        </echo>
+    </target>
+
+
+    <!-- ============================================  -->
+    <!-- Target: prepare                               -->
+    <!-- ============================================  -->
+    <target name="prepare">
+        <echo msg="Making directory ./build (not really)" />
+<!--        <mkdir dir="./build" />-->
+    </target>
+
+    <!-- ============================================  -->
+    <!-- Target: build                                 -->
+    <!-- ============================================  -->
+    <target name="build" depends="prepare">
+        <echo msg="Copying files to build directory... (not really)" />
+
+        <echo msg="Copying ./about.php to ./build directory... (not really)" />
+<!--        <copy file="./about.php" tofile="./build/about.php" />-->
+
+        <echo msg="Copying ./browsers.php to ./build directory... (not really)" />
+<!--        <copy file="./browsers.php" tofile="./build/browsers.php" />-->
+
+        <echo msg="Copying ./contact.php to ./build directory... (not really)" />
+<!--        <copy file="./contact.php" tofile="./build/contact.php" />-->
+    </target>
+
+    <!-- ============================================  -->
+    <!-- (DEFAULT)  Target: dist                       -->
+    <!-- ============================================  -->
+    <target name="dist" depends="build">
+        <echo msg="Creating archive... (not really)" />
+
+<!--
+        <tar destfile="./build/build.tar.gz" compression="gzip">
+            <fileset dir="./build">
+                <include name="*" />
+            </fileset>
+        </tar>
+-->
+        <echo msg="Files copied and compressed in build directory OK!" />
+    </target>
+</project>

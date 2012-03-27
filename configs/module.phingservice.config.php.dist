@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * PhingService Configuration
+ *
+ * If you have a ./config/autoload/ directory set up for your project, you can
+ * drop this config file in it. (remove the .dist extention to enable it)
+ */
+/**
+ * Configuration service
+ */
+$serviceConfiguration = array(
+    'phpBin'    => null, /* null will attempt to auto-detection via exec 'which php' */
+    'phingPath' => 'vendor/phing',
+);
+
+
+/**
+ * Defaults that are used to configure the phing binary
+ */
+$phingConfiguration = array(
+    'logger'       => 'phing.listener.HtmlColorLogger',
+    'logFile'      => null, /* use given file for log */
+    'propertyFile' => null, /* load all properties from file */
+    'properties'   => array(),
+    'inputHandler' => null,  /* the class to use to handle user input */
+    'longTargets'  => false, /* show target descriptions during build */
+    'find'         => null, /* search for buildfile towards the root of the filesystem and use it */
+    'list'         => false, /* list available targets in this project */
+);
+
+/**
+ * You do not need to edit below this line
+ */
+return array(
+    'di' => array(
+        'instance' => array(
+            'service-configuration' => array(
+                'parameters' => array(
+                    'options'      => $serviceConfiguration
+                ),
+            ),
+            'phing-configuration' => array(
+                'parameters' => array(
+                    'phingOptions' => $phingConfiguration
+                ),
+            ),
+        ),
+    ),
+);
