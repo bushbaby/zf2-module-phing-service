@@ -11,7 +11,7 @@
  */
 $serviceConfiguration = array(
     'phpBin'    => null, /* null will attempt to auto-detection via exec 'which php' */
-    'phingPath' => 'vendor/phing',
+    'phingPath' => null, /* will assume composer installation and attempt auto detect */
 );
 
 
@@ -20,7 +20,7 @@ $serviceConfiguration = array(
  */
 $phingConfiguration = array(
     'logger'       => 'phing.listener.HtmlColorLogger',
-    'logFile'      => null, /* use given file for log */
+    'logFile'      => null, /* use given file for log, note that no output will be available from the exec call, also note that phing does not append to the log file, it will be replaced */
     'propertyFile' => null, /* load all properties from file */
     'properties'   => array(),
     'inputHandler' => null,  /* the class to use to handle user input */

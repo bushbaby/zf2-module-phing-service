@@ -18,7 +18,7 @@ return array(
                 'parameters' => array(
                     'options' => array(
                         'phpBin'              => null, /* will attempt auto-detection via exec 'which php' */
-                        'phingPath'           => 'vendor/phing',
+                        'phingPath'           => null, /* will assume composer installation and attempt auto detect */
                     ),
                 ),
             ),
@@ -38,7 +38,7 @@ return array(
             ),
             /* Enable this route to get instant gratification at http://localhost/phingservice
              *
-            'Zend\Mvc\Router\RouteStack' => array(
+            'Zend\Mvc\Router\RouteStackInterface' => array(
                 'parameters' => array(
                     'routes' => array(
                         'phingservice-index' => array(

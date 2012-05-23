@@ -1,43 +1,33 @@
 # PhingService
 
 ## Introduction
-PhingService is module for Zend Framework 2 that will enable you to run the
-bundled [phing](http://www.phing.info/ "Phing") binaries from within ZF2 projects.
+PhingService is module for Zend Framework 2 that will enable you to run
+[phing](http://www.phing.info/ "Phing") build files from within ZF2 projects.
 
 ## Requirements
   * Zend Framework 2 (https://github.com/zendframework/zf2)
+  * Phing
   * The ability to run php from the commandline [exec](php.net/manual/en/function.exec.php)
 
 ## Installation
-### Easy peasy
-The easiest way to get a working copy of this project is to do a recursive clone:
+### Using Composer (recommended)
+The recommended way to get a working copy of this project is to modify your composer.json
+in your project root. This will take care of dependancies.
 
-    cd /to/your/project/directory
-    git clone --recursive git://github.com/basz/zf2-module-phing-service.git vendor/PhingService
-	# Optionally, point the local repository to a specific release.
-    cd /to/your/project/directory/vendor/PhingService
-    git checkout v1.0.0
+    "require":{
+        "bushbaby/zf2-module-phing-service":"1.0.*",
+     },
 
-### Easy peasy v2
-Or you can add this as a submodule to your .git repository
+and then run
 
-    cd /to/your/project/directory
-    git submodule add git://github.com/basz/zf2-module-phing-service.git  vendor/PhingService
-	# Optionally, point the local repository to a specific release.
-    cd /to/your/project/directory/vendor/PhingService
-    git checkout v1.0.0
-
-### Painless Gui Folks
-Finally you can download a released version from
-[Github](https://github.com/basz/zf2-module-phing-service/tags "Github") and drop it into
-your vendor directory. _Note that you also need to install phing then by hand and possibly
-change the configuration so PhingService can find the installation path_.
-
+	cd /to/your/project/directory
+    php composer.phar update
+    
 ## Configuration
 
   * Open `.../configs/application.config.php` and add 'PhingService'
     to the 'modules' parameter to register the module within your application.
-  * Optionally copy `.../vendor/PhingService/config/module.phingservice.config.php.dist` to
+  * Optionally copy `.../vendor/bushbaby/zf2-module-phing-service/config/module.phingservice.config.php.dist` to
      `.../config/autoload/module.phingservice.config.php` to override some defaults.
 
 ## How to use PhingService
