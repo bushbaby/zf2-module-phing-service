@@ -5,18 +5,17 @@ namespace PhingService\Controller;
 use Zend\Mvc\Controller\ActionController,
     Zend\View\Model\ViewModel;
 
-class PhingServiceController extends ActionController
+class IndexController extends ActionController
 {
 
     public function indexAction()
     {
         $options = array('buildFile' => __DIR__ . '/../../../data/build-example.xml');
 
-        $buildResult = $this->locator->get('phing-service')->build('show-defaults dist' /* target */, $options);
+        $buildResult = $this->getServiceLocator()->get('PhingService')->build('show-defaults dist' /* target */, $options);
 
         $view = new ViewModel($buildResult);
-        $view->setTemplate('phingservice/index');
-
+        $view->setTerminal(true);
         return $view;
     }
 

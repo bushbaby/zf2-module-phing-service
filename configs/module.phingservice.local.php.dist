@@ -1,7 +1,7 @@
 <?php
 
 /**
- * PhingService Configuration
+ * PhingService Options
  *
  * If you have a ./config/autoload/ directory set up for your project, you can
  * drop this config file in it. (remove the .dist extention to enable it)
@@ -9,16 +9,15 @@
 /**
  * Configuration service
  */
-$serviceConfiguration = array(
+$serviceOptions = array(
     'phpBin'    => null, /* null will attempt to auto-detection via exec 'which php' */
     'phingPath' => null, /* will assume composer installation and attempt auto detect */
 );
 
-
 /**
  * Defaults that are used to configure the phing binary
  */
-$phingConfiguration = array(
+$phingOptions = array(
     'logger'       => 'phing.listener.HtmlColorLogger',
     'logFile'      => null, /* use given file for log, note that no output will be available from the exec call, also note that phing does not append to the log file, it will be replaced */
     'propertyFile' => null, /* load all properties from file */
@@ -29,22 +28,32 @@ $phingConfiguration = array(
     'list'         => false, /* list available targets in this project */
 );
 
-/**
- * You do not need to edit below this line
- */
+
 return array(
-    'di' => array(
-        'instance' => array(
-            'service-configuration' => array(
-                'parameters' => array(
-                    'options'      => $serviceConfiguration
-                ),
-            ),
-            'phing-configuration' => array(
-                'parameters' => array(
-                    'phingOptions' => $phingConfiguration
+    'PhingService.serviceOptions' => $serviceOptions,
+    'PhingService.phingOptions' => $phingOptions,
+
+    /* Enable the following section to get instant gratification at http://localhost/phingservice
+     *
+    'router' => array(
+        'routes' => array(
+            'clean-caches' => array(
+                'type'    => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/phingservice',
+                    'defaults' => array(
+                        'controller' => 'PhingService\Controller\IndexController',
+                        'action'     => 'index',
+                    ),
                 ),
             ),
         ),
     ),
+    'view_manager' => array(
+        'template_path_stack' => array(
+            'PhingService' => __DIR__ . '/../view',
+        ),
+    ),
+    /**/
+
 );
