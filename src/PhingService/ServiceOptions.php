@@ -63,18 +63,18 @@ class ServiceOptions extends Options
     /**
      * Sets the path to the phing library installation
      *
-     * Can be a absolute path or a relative path from module root
-     *
      * @param string $path
      * @throws \RuntimeException When path can't be found
      */
     public function setPhingPath($path)
     {
-        if (substr($path, 0, 1) != DIRECTORY_SEPARATOR) {
-            $path = realpath(__DIR__ . '/../..') . DIRECTORY_SEPARATOR . $path;
+        if ($path === null) {
+            $this->phingPath = null;
+
+            return;
         }
 
-        if (!is_dir($path)) {
+        if (!is_dir(realpath($path))) {
             throw new \RuntimeException(sprintf("Path '%s' does not exists '%s'", 'phingPath', $path));
         }
 
@@ -85,13 +85,14 @@ class ServiceOptions extends Options
     {
         if ($this->phingPath == null) {
             // set with null to try to do auto-discover phing lib in vendor
-            $this->setPhingPath(realpath(__DIR__ . '/../..') . DIRECTORY_SEPARATOR . 'vendor/phing');
+            $this->setPhingPath(realpath('.') . DIRECTORY_SEPARATOR . 'vendor/phing/phing');
 
             // still null? complain!
             if ($this->phingPath == null) {
                 throw new \RuntimeException(sprintf("We cannot auto discover the path to the phing library, therefore can't run phing!", $path));
             }
         }
+
         return $this->phingPath;
     }
 

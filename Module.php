@@ -5,7 +5,7 @@ namespace PhingService;
 use Zend\Module\Consumer\AutoloaderProvider,
     Zend\Module\Listener\ModuleResolverListener;
 
-class Module implements AutoloaderProvider
+class Module
 {
 
     public function getConfig($env = null)
@@ -13,16 +13,25 @@ class Module implements AutoloaderProvider
         return include __DIR__ . '/configs/module.config.php';
     }
 
-    public function getAutoloaderConfig()
+    public function getServiceConfiguration()
     {
         return array(
-            'Zend\Loader\ClassMapAutoloader' => array(__DIR__ . '/autoload_classmap.php'),
-            'Zend\Loader\StandardAutoloader' => array(
-                'namespaces' => array(
-                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
-                ),
+            'factories' => array(
+                'PhingService' => function ($sm) {
+                    $service = new \PhingService\Service();
+
+                    $service->setOptions($sm->get('PhingService.serviceOptions'));
+                    $service->setPhingOptions($sm->get('PhingService.phingOptions'));
+
+                    return $service;
+                },
+                'PhingService.serviceOptions' => function ($sm) {
+                    return new \PhingService\ServiceOptions($sm->get('config')->get('PhingService.serviceOptions')->toArray());
+                },
+                'PhingService.phingOptions' => function ($sm) {
+                    return new \PhingService\PhingOptions($sm->get('config')->get('PhingService.phingOptions')->toArray());
+                },
             ),
         );
     }
-
 }

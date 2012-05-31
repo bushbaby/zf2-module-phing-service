@@ -15,11 +15,32 @@ class Service
      */
     protected $phingOptions;
 
-    public function __construct(ServiceOptions $options, PhingOptions $phingOptions)
+    public function __construct(ServiceOptions $options = null, PhingOptions $phingOptions = null)
     {
         $this->options = $options;
         $this->phingOptions = $phingOptions;
     }
+
+    public function getOptions()
+    {
+        return $this->options;
+    }
+
+    public function setOptions(ServiceOptions $options)
+    {
+        $this->options = $options;
+    }
+
+    public function getPhingOptions()
+    {
+        return $this->phingOptions;
+    }
+
+    public function setPhingOptions(PhingOptions $phingOptions)
+    {
+        $this->phingOptions = $phingOptions;
+    }
+
 
     /**
      *
