@@ -37,21 +37,16 @@ return array(
      *
     'router' => array(
         'routes' => array(
-            'clean-caches' => array(
+            'PhingService' => array(
                 'type'    => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
                     'route'    => '/phingservice',
                     'defaults' => array(
-                        'controller' => 'PhingService\Controller\IndexController',
+                        'controller' => 'phingservice.index',
                         'action'     => 'index',
                     ),
                 ),
             ),
-        ),
-    ),
-    'view_manager' => array(
-        'template_path_stack' => array(
-            'PhingService' => __DIR__ . '/../view',
         ),
     ),
     /**/

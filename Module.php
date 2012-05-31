@@ -26,10 +26,12 @@ class Module
                     return $service;
                 },
                 'PhingService.serviceOptions' => function ($sm) {
-                    return new \PhingService\ServiceOptions($sm->get('config')->get('PhingService.serviceOptions')->toArray());
+                    $config = $sm->get('config');
+                    return new \PhingService\ServiceOptions($config['PhingService.serviceOptions']);
                 },
                 'PhingService.phingOptions' => function ($sm) {
-                    return new \PhingService\PhingOptions($sm->get('config')->get('PhingService.phingOptions')->toArray());
+                    $config = $sm->get('config');
+                    return new \PhingService\PhingOptions($config['PhingService.phingOptions']);
                 },
             ),
         );
