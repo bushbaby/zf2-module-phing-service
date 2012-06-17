@@ -15,8 +15,9 @@
       "module"
    ],
    "require":{
+	  "php": ">=5.3.3",
       "phing/phing":"2.4.*",
-      "zendframework/zendframework": "2.0.*"
+      "zendframework/zendframework": "dev-master"
    },
    "autoload": {
         "psr-0": {
