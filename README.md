@@ -18,6 +18,9 @@ PLEASE USE AT YOUR OWN RISK.
 
 updated to work with ZF2 beta-4
 
+[![Build Status](https://secure.travis-ci.org/basz/zf2-module-phing-service.png?branch=master)](http://travis-ci.org/basz/zf2-module-phing-service)
+
+
 ## Installation
 ### Using Composer (recommended)
 The recommended way to get a working copy of this project is to modify your composer.json
