@@ -11,12 +11,11 @@ PhingService is module for Zend Framework 2 that will enable you to run
 
 ## Release information
 
-v1.0.0-beta1
-
 THIS RELEASE IS A DEVELOPMENT RELEASE AND NOT INTENDED FOR PRODUCTION USE.
 PLEASE USE AT YOUR OWN RISK.
 
-updated to work with ZF2 beta-4
+  * v1.0.0-beta1 - initial release
+  * v1.0.0-beta2 - 'composerized', updated to zf2-beta-4
 
 [![Build Status](https://secure.travis-ci.org/basz/zf2-module-phing-service.png?branch=master)](http://travis-ci.org/basz/zf2-module-phing-service)
 
@@ -76,7 +75,7 @@ every controller so retrieval is trivial.
 To get a quick taste you can enable the defined route in module.conf.php and point your 
 browser at `http://localhost/phingservice` to get an working example.
 
-## Licence
+## License
 The MIT License (MIT)
 Copyright (c) 2012 bushbaby multimedia
 
