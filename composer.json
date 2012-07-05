@@ -24,7 +24,8 @@
             "PhingService": "src/"
         },
         "classmap": [
-            "Module.php"
+            "Module.php",
+            "vendor/zendframework/zendframework/library"
         ]
     }
  }
