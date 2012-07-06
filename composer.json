@@ -24,7 +24,7 @@
             "PhingService": "src/"
         },
         "classmap": [
-            "./"
+            "Module.php"
         ]
     }
  }
