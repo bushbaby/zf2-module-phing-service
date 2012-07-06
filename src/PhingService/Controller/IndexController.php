@@ -2,10 +2,10 @@
 
 namespace PhingService\Controller;
 
-use Zend\Mvc\Controller\ActionController,
+use Zend\Mvc\Controller\AbstractActionController,
     Zend\View\Model\ViewModel;
 
-class IndexController extends ActionController
+class IndexController extends AbstractActionController
 {
 
     public function indexAction()
@@ -14,7 +14,6 @@ class IndexController extends ActionController
 
         $buildResult = $this->getServiceLocator()->get('PhingService')->build('show-defaults dist' /* target */, $options);
 
-//        print_r($this->getServiceLocator()->get('ViewManager'));
         $view = new ViewModel($buildResult);
         $view->setTerminal(true);
 
