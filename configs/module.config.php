@@ -7,11 +7,8 @@ return array(
     ),
     'PhingService.phingOptions' => array(
     ),
-    'controller' => array(
-        // Map of controller "name" to class
-        // This should be used if you do not need to inject any dependencies
-        // in your controller
-        'classes' => array(
+    'controllers' => array(
+        'invokables' => array(
             'phingservice.index' => 'PhingService\Controller\IndexController',
         ),
     ),
