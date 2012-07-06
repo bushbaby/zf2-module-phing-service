@@ -9,3 +9,8 @@ before_script:
   - php composer.phar install
 
 script: phpunit --configuration tests/phpunit.xml
+
+notifications:
+  email:
+    recipients:
+      - monitor@bushbaby.nl
