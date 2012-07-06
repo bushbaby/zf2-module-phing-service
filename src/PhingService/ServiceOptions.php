@@ -2,10 +2,10 @@
 
 namespace PhingService;
 
-use Zend\Stdlib\Options,
+use Zend\Stdlib\AbstractOptions,
     PhingService\Service;
 
-class ServiceOptions extends Options
+class ServiceOptions extends AbstractOptions
 {
 
     /**
