@@ -11,12 +11,10 @@ BsbPhingService is module for Zend Framework 2 that will enable you to run
 
 ## Release information
 
-THIS RELEASE IS A DEVELOPMENT RELEASE AND NOT INTENDED FOR PRODUCTION USE.
-PLEASE USE AT YOUR OWN RISK.
-
   * v1.0.0-beta1 - initial release
   * v1.0.0-beta2 - 'composerized', updated to zf2-beta-4
   * v1.0.0-beta3 - updated to zf2 2.0.0+ ! BC Break by namespace and configuration changes!
+  * v1.0.0 - First release
 
 [![Build Status](https://secure.travis-ci.org/basz/zf2-module-phing-service.png?branch=master)](http://travis-ci.org/basz/zf2-module-phing-service)
 
@@ -27,7 +25,7 @@ The recommended way to get a working copy of this project is to modify your comp
 in your project root. This will take care of dependancies.
 
     "require":{
-        "bushbaby/zf2-module-phing-service":"1.0.*",
+        "bushbaby/zf2-module-phing-service":"1.*",
      },
 
 and then update

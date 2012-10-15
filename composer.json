@@ -16,7 +16,7 @@
    ],
    "require":{
 	  "php": ">=5.3.3",
-      "phing/phing":"dev-master",
+      "phing/phing":"2.*",
       "zendframework/zendframework": "2.0.*"
    },
    "autoload": {
