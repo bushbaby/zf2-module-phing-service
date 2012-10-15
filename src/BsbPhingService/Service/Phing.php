@@ -82,7 +82,7 @@ class Phing
 
         exec($command, $output, $return_status);
 
-        return Array('command'      => $command, 'output'       => implode(PHP_EOL, $output), 'returnStatus' => $return_status);
+        return array('command' => $command, 'output' => implode(PHP_EOL, $output), 'returnStatus' => $return_status);
     }
 
     public static function hasExec()
