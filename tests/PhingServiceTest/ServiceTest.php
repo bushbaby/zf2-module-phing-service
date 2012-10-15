@@ -10,8 +10,7 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     *
-     * @var PhingService\Service
+     * @var BsbPhingService\Service\Phing $service
      */
     protected $service;
 
@@ -39,7 +38,7 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
     {
         $so = new ServiceOptions();
         $po = new PhingOptions();
-        $service = new Service($so, $po);
+        $service = new Phing($so, $po);
         $result = $service->build();
         $this->assertTrue($result['returnStatus'] == 255); // Buildfile: build.xml does not exist!
     }
