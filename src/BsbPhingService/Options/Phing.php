@@ -1,11 +1,11 @@
 <?php
 
-namespace PhingService;
+namespace BsbPhingService\Options;
 
 use Zend\Stdlib\AbstractOptions;
 use Zend\Stdlib\Parameters;
 
-class PhingOptions extends AbstractOptions
+class Phing extends AbstractOptions
 {
 
     protected $buildFile    = null;

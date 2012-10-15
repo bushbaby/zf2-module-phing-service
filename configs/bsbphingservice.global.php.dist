@@ -30,19 +30,22 @@ $phingOptions = array(
 
 
 return array(
-    'PhingService.serviceOptions' => $serviceOptions,
-    'PhingService.phingOptions' => $phingOptions,
+    'bsbphingservice' => array(
+        'service' => $serviceOptions,
+        'phing' => $phingOptions,
+    ),
 
     /* Enable the following section to get instant gratification at http://localhost/phingservice
      *
     'router' => array(
         'routes' => array(
             'PhingService' => array(
-                'type'    => 'Zend\Mvc\Router\Http\Literal',
+                'type'    => 'Literal',
                 'options' => array(
                     'route'    => '/phingservice',
                     'defaults' => array(
-                        'controller' => 'phingservice.index',
+                        '__NAMESPACE__' => 'BsbPhingService\Controller',
+                        'controller' => 'Index',
                         'action'     => 'index',
                     ),
                 ),

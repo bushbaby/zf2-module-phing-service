@@ -1,10 +1,10 @@
 <?php
 
-namespace PhingServiceTest;
+namespace BsbPhingServiceTest;
 
-use PhingService\Service,
-    PhingService\ServiceOptions,
-    PhingService\PhingOptions;
+use BsbPhingService\Service\Phing;
+use BsbPhingService\Options\Service as ServiceOptions;
+use BsbPhingService\Options\Phing as PhingOptions;
 
 class ServiceTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,7 +19,7 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
     {
         $so = new ServiceOptions();
         $po = new PhingOptions();
-        $this->service = new Service($so, $po);
+        $this->service = new Phing($so, $po);
     }
 
     public function testOptionDiscoveryPhpBin()

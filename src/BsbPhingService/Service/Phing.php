@@ -1,8 +1,11 @@
 <?php
 
-namespace PhingService;
+namespace BsbPhingService\Service;
 
-class Service
+use BsbPhingService\Options\Service as ServiceOptions;
+use BsbPhingService\Options\Phing as PhingOptions;
+
+class Phing
 {
 
     /**
