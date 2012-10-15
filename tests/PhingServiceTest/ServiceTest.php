@@ -40,7 +40,7 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
         $po = new PhingOptions();
         $service = new Phing($so, $po);
         $result = $service->build();
-        $this->assertEquals(225, $result['returnStatus']); // Buildfile: build.xml does not exist!
+        $this->assertEquals(255, $result['returnStatus']); // Buildfile: build.xml does not exist!
     }
 
 }
