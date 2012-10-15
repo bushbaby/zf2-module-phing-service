@@ -1,6 +1,6 @@
 <?php
 
-namespace PhingService\Controller;
+namespace BsbPhingService\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController,
     Zend\View\Model\ViewModel;
@@ -12,10 +12,9 @@ class IndexController extends AbstractActionController
     {
         $options = array('buildFile' => __DIR__ . '/../../../data/build-example.xml');
 
-        $buildResult = $this->getServiceLocator()->get('PhingService')->build('show-defaults dist' /* target */, $options);
+        $buildResult = $this->getServiceLocator()->get('BsbPhingService')->build('show-defaults dist' /* target */, $options);
 
         $view = new ViewModel($buildResult);
-        $view->setTerminal(true);
 
         return $view;
     }

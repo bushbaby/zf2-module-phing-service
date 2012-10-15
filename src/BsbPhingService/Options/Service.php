@@ -1,11 +1,11 @@
 <?php
 
-namespace PhingService;
+namespace BsbPhingService\Options;
 
-use Zend\Stdlib\AbstractOptions,
-    PhingService\Service;
+use Zend\Stdlib\AbstractOptions;
+use BsbPhingService\Service\Phing;
 
-class ServiceOptions extends AbstractOptions
+class Service extends AbstractOptions
 {
 
     /**
@@ -30,7 +30,7 @@ class ServiceOptions extends AbstractOptions
     public function setPhpBin($path = null)
     {
         if ($path === null) {
-            if (!Service::hasExec()) {
+            if (!Phing::hasExec()) {
                 throw new \RuntimeException("Not able to use PHP's exec method");
             }
 

@@ -1,17 +1,16 @@
 <?php
 
-namespace PhingServiceTest;
+namespace BsbPhingServiceTest;
 
-use PhingService\Service,
-    PhingService\ServiceOptions,
-    PhingService\PhingOptions;
+use BsbPhingService\Service\Phing;
+use BsbPhingService\Options\Service as ServiceOptions;
+use BsbPhingService\Options\Phing as PhingOptions;
 
 class ServiceTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     *
-     * @var PhingService\Service
+     * @var BsbPhingService\Service\Phing $service
      */
     protected $service;
 
@@ -19,7 +18,7 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
     {
         $so = new ServiceOptions();
         $po = new PhingOptions();
-        $this->service = new Service($so, $po);
+        $this->service = new Phing($so, $po);
     }
 
     public function testOptionDiscoveryPhpBin()
@@ -39,9 +38,9 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
     {
         $so = new ServiceOptions();
         $po = new PhingOptions();
-        $service = new Service($so, $po);
+        $service = new Phing($so, $po);
         $result = $service->build();
-        $this->assertTrue($result['returnStatus'] == 255); // Buildfile: build.xml does not exist!
+        $this->assertEquals(255, $result['returnStatus']); // Buildfile: build.xml does not exist!
     }
 
 }

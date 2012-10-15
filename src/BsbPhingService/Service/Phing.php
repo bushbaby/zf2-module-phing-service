@@ -1,8 +1,11 @@
 <?php
 
-namespace PhingService;
+namespace BsbPhingService\Service;
 
-class Service
+use BsbPhingService\Options\Service as ServiceOptions;
+use BsbPhingService\Options\Phing as PhingOptions;
+
+class Phing
 {
 
     /**
@@ -79,7 +82,7 @@ class Service
 
         exec($command, $output, $return_status);
 
-        return Array('command'      => $command, 'output'       => implode(PHP_EOL, $output), 'returnStatus' => $return_status);
+        return array('command' => $command, 'output' => implode(PHP_EOL, $output), 'returnStatus' => $return_status);
     }
 
     public static function hasExec()

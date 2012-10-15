@@ -1,20 +1,23 @@
 <?php
 
 return array(
-    'PhingService.serviceOptions' => array(
-        'phpBin'                    => null, /* will attempt auto-detection via exec 'which php' */
-        'phingPath'                 => null, /* will assume composer installation and attempt auto detect */
-    ),
-    'PhingService.phingOptions' => array(
+    'bsbphingservice' => array(
+        'service' => array(
+            'phpBin'    => null, /* will attempt auto-detection via exec 'which php' */
+            'phingPath' => null, /* will assume composer installation and attempt auto detect */
+        ),
+        'phing' => array(
+
+        ),
     ),
     'controllers' => array(
         'invokables' => array(
-            'phingservice.index' => 'PhingService\Controller\IndexController',
+            'BsbPhingService\Controller\Index' => 'BsbPhingService\Controller\IndexController',
         ),
     ),
     'view_manager' => array(
-        'template_path_stack' => array(
-            'PhingService' => __DIR__ . '/../view',
+        'template_map' => array(
+            'bsb-phing-service/index/index'           => __DIR__ . '/../view/index/index.phtml',
         ),
-    ),
-);
+    )
+ );

@@ -1,39 +1,7 @@
 <?php
-
-namespace PhingService;
-
-use Zend\Module\Consumer\AutoloaderProvider,
-    Zend\Module\Listener\ModuleResolverListener;
-
-class Module
-{
-
-    public function getConfig($env = null)
-    {
-        return include __DIR__ . '/configs/module.config.php';
-    }
-
-    public function getServiceConfiguration()
-    {
-        return array(
-            'factories' => array(
-                'PhingService' => function ($sm) {
-                    $service = new \PhingService\Service();
-
-                    $service->setOptions($sm->get('PhingService.serviceOptions'));
-                    $service->setPhingOptions($sm->get('PhingService.phingOptions'));
-
-                    return $service;
-                },
-                'PhingService.serviceOptions' => function ($sm) {
-                    $config = $sm->get('config');
-                    return new \PhingService\ServiceOptions($config['PhingService.serviceOptions']);
-                },
-                'PhingService.phingOptions' => function ($sm) {
-                    $config = $sm->get('config');
-                    return new \PhingService\PhingOptions($config['PhingService.phingOptions']);
-                },
-            ),
-        );
-    }
-}
+/**
+ * This file is placed here for compatibility with Zendframework 2's ModuleManager.
+ * It allows usage of this module even without composer.
+ * The original Module.php is in 'src/BsbPhingService' in order to respect PSR-0
+ */
+require_once __DIR__ . '/src/BsbPhingService/Module.php';
