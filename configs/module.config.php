@@ -21,5 +21,3 @@ return array(
         ),
     )
  );
-
-
