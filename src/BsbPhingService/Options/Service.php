@@ -63,7 +63,7 @@ class Service extends AbstractOptions
     /**
      * Sets the path to the phing library installation
      *
-     * @param string $path
+     * @param  string            $path
      * @throws \RuntimeException When path can't be found
      */
     public function setPhingPath($path)

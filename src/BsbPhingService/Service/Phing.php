@@ -44,11 +44,10 @@ class Phing
         $this->phingOptions = $phingOptions;
     }
 
-
     /**
      *
-     * @param type $target
-     * @param null|array|Traversable $options
+     * @param  type                   $target
+     * @param  null|array|Traversable $options
      * @return type
      */
     public function build($target = null, $options = null)
@@ -131,7 +130,7 @@ class Phing
     /**
      * Construct an array with arguments to configure the phing binary
      *
-     * @param PhingOptions $options
+     * @param  PhingOptions $options
      * @return type
      */
     protected function getPhingCommandArgumentsArray(PhingOptions $options)
@@ -170,7 +169,7 @@ class Phing
             $arguments[] = "-list";
         }
 
-        foreach ($options->getProperties() AS $key => $value) {
+        foreach ($options->getProperties() as $key => $value) {
             $arguments[] = sprintf("-D%s=%s", (string) $key, (string) escapeshellarg($value));
         }
 
