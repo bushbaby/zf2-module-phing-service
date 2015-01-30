@@ -2,6 +2,8 @@
 
 namespace BsbPhingService\Options;
 
+use InvalidArgumentException;
+use RuntimeException;
 use Zend\Stdlib\AbstractOptions;
 use Zend\Stdlib\Parameters;
 
@@ -33,11 +35,11 @@ class Phing extends AbstractOptions
     public function setBuildFile($path)
     {
         if (!is_file($path)) {
-            throw new \RuntimeException(sprintf("Path '%s' does not exists '%s'", 'buildFile', $path));
+            throw new RuntimeException(sprintf("Path '%s' does not exists '%s'", 'buildFile', $path));
         }
 
         if (pathinfo($path, PATHINFO_EXTENSION) != 'xml') {
-            throw new \InvalidArgumentException(sprintf("File '%s' is not an xml file '%s'", 'buildFile', $path));
+            throw new InvalidArgumentException(sprintf("File '%s' is not an xml file '%s'", 'buildFile', $path));
         }
 
         $this->buildFile = (string) realpath($path);

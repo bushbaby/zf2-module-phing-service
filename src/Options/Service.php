@@ -2,8 +2,9 @@
 
 namespace BsbPhingService\Options;
 
-use Zend\Stdlib\AbstractOptions;
 use BsbPhingService\Service\Phing;
+use Zend\Stdlib\AbstractOptions;
+use RuntimeException;
 
 class Service extends AbstractOptions
 {
@@ -31,7 +32,7 @@ class Service extends AbstractOptions
     {
         if ($path === null) {
             if (!Phing::hasExec()) {
-                throw new \RuntimeException("Not able to use PHP's exec method");
+                throw new RuntimeException("Not able to use PHP's exec method");
             }
 
             $res  = exec('which php', $o, $val);
@@ -39,7 +40,7 @@ class Service extends AbstractOptions
         }
 
         if (!is_file($path) || !is_executable($path)) {
-            throw new \RuntimeException(
+            throw new RuntimeException(
                 sprintf("The provided php binary does not exists or is not executable '%s'", $path)
             );
         }
@@ -55,7 +56,7 @@ class Service extends AbstractOptions
 
             // still null? complain!
             if ($this->phpBin == null) {
-                throw new \RuntimeException(
+                throw new RuntimeException(
                     sprintf("We cannot auto discover the path to your cli php, therefore can't run phing!")
                 );
             }
@@ -67,8 +68,8 @@ class Service extends AbstractOptions
     /**
      * Sets the path to the phing library installation
      *
-     * @param  string            $path
-     * @throws \RuntimeException When path can't be found
+     * @param  string $path
+     * @throws RuntimeException When path can't be found
      */
     public function setPhingPath($path)
     {
@@ -79,7 +80,7 @@ class Service extends AbstractOptions
         }
 
         if (!is_dir(realpath($path))) {
-            throw new \RuntimeException(sprintf("Path '%s' does not exists '%s'", 'phingPath', $path));
+            throw new RuntimeException(sprintf("Path '%s' does not exists '%s'", 'phingPath', $path));
         }
 
         $this->phingPath = realpath($path);
@@ -93,7 +94,7 @@ class Service extends AbstractOptions
 
             // still null? complain!
             if ($this->phingPath == null) {
-                throw new \RuntimeException(
+                throw new RuntimeException(
                     sprintf("We cannot auto discover the path to the phing library, therefore can't run phing!")
                 );
             }
