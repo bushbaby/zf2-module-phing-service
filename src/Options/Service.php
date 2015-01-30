@@ -39,7 +39,9 @@ class Service extends AbstractOptions
         }
 
         if (!is_file($path) || !is_executable($path)) {
-            throw new \RuntimeException(sprintf("The provided php binary does not exists or is not executable '%s'", $path));
+            throw new \RuntimeException(
+                sprintf("The provided php binary does not exists or is not executable '%s'", $path)
+            );
         }
 
         $this->phpBin = (string) $path;
@@ -53,7 +55,9 @@ class Service extends AbstractOptions
 
             // still null? complain!
             if ($this->phpBin == null) {
-                throw new \RuntimeException(sprintf("We cannot auto discover the path to your cli php, therefore can't run phing!", $path));
+                throw new \RuntimeException(
+                    sprintf("We cannot auto discover the path to your cli php, therefore can't run phing!")
+                );
             }
         }
 
@@ -89,7 +93,9 @@ class Service extends AbstractOptions
 
             // still null? complain!
             if ($this->phingPath == null) {
-                throw new \RuntimeException(sprintf("We cannot auto discover the path to the phing library, therefore can't run phing!", $path));
+                throw new \RuntimeException(
+                    sprintf("We cannot auto discover the path to the phing library, therefore can't run phing!")
+                );
             }
         }
 

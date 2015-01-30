@@ -86,11 +86,11 @@ class Phing
         $builder->setPrefix($this->options->getPhingBin());
         $builder->setArguments($this->getPhingCommandArgumentsArray($options));
 
-        foreach($this->getEnv() as $key=>$value) {
+        foreach ($this->getEnv() as $key => $value) {
             $builder->setEnv($key, $value);
         }
 
-        foreach(explode(' ', $targets) as $target) {
+        foreach (explode(' ', $targets) as $target) {
             if (strlen(trim($target))) {
                 $builder->add(trim($target));
             }
