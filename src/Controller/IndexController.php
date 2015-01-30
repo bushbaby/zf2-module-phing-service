@@ -10,7 +10,7 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
-        $options = array('buildFile' => __DIR__ . '/../../../data/build-example.xml');
+        $options = array('buildFile' => __DIR__ . '/../../data/build-example.xml');
 
         $buildResult = $this
             ->getServiceLocator()
