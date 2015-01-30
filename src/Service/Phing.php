@@ -48,11 +48,11 @@ class Phing
 
     /**
      *
-     * @param  type                   $target
+     * @param  string                 $target
      * @param  null|array|Traversable $options
-     * @return type
+     * @return array
      */
-    public function build($target = null, $options = null)
+    public function build($target = "", $options = null)
     {
         $phingOptions = clone $this->phingOptions;
 
@@ -70,7 +70,12 @@ class Phing
         return $this->doBuild($target, $phingOptions);
     }
 
-    protected function doBuild($target, PhingOptions $options)
+    /**
+     * @param string       $targets space separated list of targets
+     * @param PhingOptions $options
+     * @return array
+     */
+    protected function doBuild($targets, PhingOptions $options)
     {
         if (!self::hasExec()) {
             throw new \RuntimeException("Not able to use PHP's exec method");
@@ -85,7 +90,11 @@ class Phing
             $builder->setEnv($key, $value);
         }
 
-        $builder->add($target);
+        foreach(explode(' ', $targets) as $target) {
+            if (strlen(trim($target))) {
+                $builder->add(trim($target));
+            }
+        }
 
         $process = $builder->getProcess();
 
