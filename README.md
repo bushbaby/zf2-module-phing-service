@@ -16,16 +16,23 @@ BsbPhingService is module for Zend Framework 2 that will enable you to run
   * v1.0.0-beta3 - updated to zf2 2.0.0+ ! BC Break by namespace and configuration changes!
   * v1.0.0 - First release
 
-[![Build Status](https://secure.travis-ci.org/basz/zf2-module-phing-service.png?branch=master)](http://travis-ci.org/basz/zf2-module-phing-service)
+[![Latest Stable Version](https://poser.pugx.org/bushbaby/zf2-module-phing-service/v/stable.svg)](https://packagist.org/packages/bushbaby/zf2-module-phing-service)
+[![Total Downloads](https://poser.pugx.org/bushbaby/zf2-module-phing-service/downloads.svg)](https://packagist.org/packages/bushbaby/zf2-module-phing-service)
+[![Latest Unstable Version](https://poser.pugx.org/bushbaby/zf2-module-phing-service/v/unstable.svg)](https://packagist.org/packages/bushbaby/zf2-module-phing-service)
+[![License](https://poser.pugx.org/bushbaby/zf2-module-phing-service/license.svg)](https://packagist.org/packages/bushbaby/zf2-module-phing-service)
 
+[![Build Status](https://scrutinizer-ci.com/g/basz/zf2-module-phing-service/badges/build.png?b=master)](https://scrutinizer-ci.com/g/basz/zf2-module-phing-service/build-status/master)
+[![Code Coverage](https://scrutinizer-ci.com/g/basz/zf2-module-phing-service/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/basz/zf2-module-phing-service/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/basz/zf2-module-phing-service/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/basz/zf2-module-phing-service/?branch=master)
+[![Dependency Status](https://www.versioneye.com/user/projects/54cb8adade7924d4b00002ab/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54cb8adade7924d4b00002ab)
 
 ## Installation
 ### Using Composer (recommended)
 The recommended way to get a working copy of this project is to modify your composer.json
-in your project root. This will take care of dependancies.
+in your project root. This will take care of dependencies.
 
     "require":{
-        "bushbaby/zf2-module-phing-service":"1.*",
+        "bushbaby/zf2-module-phing-service":"~1.0",
      },
 
 and then update

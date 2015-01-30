@@ -11,22 +11,8 @@ use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use BsbPhingService\Options\Service as ServiceOptions;
 use BsbPhingService\Options\Phing as PhingOptions;
 
-class Module implements AutoloaderProviderInterface, ConfigProviderInterface, ServiceProviderInterface
+class Module implements ConfigProviderInterface, ServiceProviderInterface
 {
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getAutoloaderConfig()
-    {
-        return array(
-            AutoloaderFactory::STANDARD_AUTOLOADER => array(
-                StandardAutoloader::LOAD_NS => array(
-                    __NAMESPACE__ => __DIR__,
-                ),
-            ),
-        );
-    }
 
     /**
      * {@inheritDoc}
