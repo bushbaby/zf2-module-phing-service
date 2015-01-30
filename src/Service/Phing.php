@@ -139,13 +139,14 @@ class Phing
 
         $env['PHP_COMMAND']   = $this->options->getPhpBin();
         $env['PHING_HOME']    = $this->options->getPhingPath();
-        $env['PHP_CLASSPATH'] = sprintf('%s\classes', $this->options->getPhingPath());
-
-        if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            $env['PATH']          = sprintf('%s;%s\bin', $_SERVER['PATH'], $this->options->getPhingPath());
-        } else {
-            $env['PATH']          = sprintf('%s:%s\bin', $_SERVER['PATH'], $this->options->getPhingPath());
-        }
+        $env['PHP_CLASSPATH'] = sprintf('%s%sclasses', $this->options->getPhingPath(), DIRECTORY_SEPARATOR);
+        $env['PATH']          = sprintf(
+            '%s%s%s%sbin',
+            $_SERVER['PATH'],
+            PATH_SEPARATOR,
+            DIRECTORY_SEPARATOR,
+            $this->options->getPhingPath()
+        );
 
         return $env;
     }
