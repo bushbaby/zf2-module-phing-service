@@ -100,5 +100,4 @@ class Service extends AbstractOptions
     {
         return $this->getPhingPath() . '/bin/phing';
     }
-
 }

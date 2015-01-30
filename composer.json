@@ -17,7 +17,8 @@
   "require": {
     "php": ">=5.3.3",
     "phing/phing": "~2.4,>=2.4.13",
-    "zendframework/zendframework": "~2.0"
+    "zendframework/zendframework": "~2.0",
+    "symfony/process": "~2.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "~2.0",

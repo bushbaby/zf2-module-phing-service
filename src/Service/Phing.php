@@ -2,8 +2,10 @@
 
 namespace BsbPhingService\Service;
 
-use BsbPhingService\Options\Service as ServiceOptions;
 use BsbPhingService\Options\Phing as PhingOptions;
+use BsbPhingService\Options\Service as ServiceOptions;
+use Symfony\Component\Process\Process;
+use Symfony\Component\Process\ProcessBuilder;
 
 class Phing
 {
@@ -20,7 +22,7 @@ class Phing
 
     public function __construct(ServiceOptions $options = null, PhingOptions $phingOptions = null)
     {
-        $this->options = $options;
+        $this->options      = $options;
         $this->phingOptions = $phingOptions;
     }
 
@@ -57,7 +59,8 @@ class Phing
         if ($options) {
             if (!is_array($options) && !$options instanceof Traversable) {
                 throw new \InvalidArgumentException(sprintf(
-                                'Parameter provided to %s must be an array or Traversable', __METHOD__
+                    'Parameter provided to %s must be an array or Traversable',
+                    __METHOD__
                 ));
             }
 
@@ -73,15 +76,28 @@ class Phing
             throw new \RuntimeException("Not able to use PHP's exec method");
         }
 
-        $commands = $this->getEnvironmentCommands();
+        $builder = new ProcessBuilder();
 
-        $commands[] = sprintf("%s %s \\\n      %s 2>&1 ", $this->options->getPhingBin(), implode(" \\\n      ", $this->getPhingCommandArgumentsArray($options)), $target);
+        $builder->setPrefix($this->options->getPhingBin());
+        $builder->setArguments($this->getPhingCommandArgumentsArray($options));
 
-        $command = implode(" && \\\n", $commands);
+        foreach($this->getEnv() as $key=>$value) {
+            $builder->setEnv($key, $value);
+        }
 
-        exec($command, $output, $return_status);
+        $builder->add($target);
 
-        return array('command' => $command, 'output' => implode(PHP_EOL, $output), 'returnStatus' => $return_status);
+        $process = $builder->getProcess();
+
+        $process->run();
+
+        $result = array(
+            'command'      => $process->getCommandLine(),
+            'output'       => $process->getOutput(),
+            'returnStatus' => $process->getExitCode()
+        );
+
+        return $result;
     }
 
     public static function hasExec()
@@ -106,59 +122,63 @@ class Phing
     /**
      * Construct an array with commands to configure the cli environment
      *
-     * @return Array
+     * @return array
      */
-    protected function getEnvironmentCommands()
+    protected function getEnv()
     {
-        $commands = array();
+        $env = array();
+
+        $env['PHP_COMMAND']   = $this->options->getPhpBin();
+        $env['PHING_HOME']    = $this->options->getPhingPath();
+        $env['PHP_CLASSPATH'] = sprintf('%s\classes', $this->options->getPhingPath());
 
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            $commands[] = sprintf('set PHP_COMMAND=%s', $this->options->getPhpBin());
-            $commands[] = sprintf('set PHING_HOME=%s', $this->options->getPhingPath());
-            $commands[] = sprintf('set PHP_CLASSPATH=%s\classes', $this->options->getPhingPath());
-            $commands[] = 'set PATH=%PATH%;%PHING_HOME%\bin';
+            $env['PATH']          = sprintf('%s;%s\bin', $_SERVER['PATH'], $this->options->getPhingPath());
         } else {
-            $commands[] = sprintf('export PHP_COMMAND=%s', $this->options->getPhpBin());
-            $commands[] = sprintf('export PHING_HOME=%s', $this->options->getPhingPath());
-            $commands[] = 'export PHP_CLASSPATH=${PHING_HOME}/classes';
-            $commands[] = 'export PATH=${PATH}:${PHING_HOME}/bin';
+            $env['PATH']          = sprintf('%s:%s\bin', $_SERVER['PATH'], $this->options->getPhingPath());
         }
 
-        return $commands;
+        return $env;
     }
 
     /**
      * Construct an array with arguments to configure the phing binary
      *
      * @param  PhingOptions $options
-     * @return type
+     * @return array
      */
     protected function getPhingCommandArgumentsArray(PhingOptions $options)
     {
         $arguments = array();
 
         if ($options->getBuildFile()) {
-            $arguments[] = sprintf("-buildfile %s", escapeshellarg($options->getBuildFile()));
+            $arguments[] = "-buildfile";
+            $arguments[] = $options->getBuildFile();
         }
 
         if ($options->getLogger()) {
-            $arguments[] = sprintf("-logger %s", escapeshellarg($options->getLogger()));
+            $arguments[] = "-logger";
+            $arguments[] = $options->getLogger();
         }
 
         if ($options->getLogFile()) {
-            $arguments[] = sprintf("-logfile %s", escapeshellarg($options->getLogFile()));
+            $arguments[] = "-logfile";
+            $arguments[] = $options->getLogFile();
         }
 
         if ($options->getPropertyFile()) {
-            $arguments[] = sprintf("-propertyfile %s", escapeshellarg($options->getPropertyFile()));
+            $arguments[] = "-propertyfile";
+            $arguments[] = $options->getPropertyFile();
         }
 
         if ($options->getInputHandler()) {
-            $arguments[] = sprintf("-inputhandler %s", escapeshellarg($options->getInputHandler()));
+            $arguments[] = "-inputhandler";
+            $arguments[] = $options->getInputHandler();
         }
 
         if ($options->getFind()) {
-            $arguments[] = sprintf("-find %s", escapeshellarg($options->getFind()));
+            $arguments[] = "-find";
+            $arguments[] = $options->getFind();
         }
 
         if ($options->getLongTargets()) {
@@ -175,5 +195,4 @@ class Phing
 
         return $arguments;
     }
-
 }
