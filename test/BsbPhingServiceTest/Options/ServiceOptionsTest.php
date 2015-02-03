@@ -21,8 +21,9 @@ class ServiceOptionsTest extends \PHPUnit_Framework_TestCase
 
     public function testGetPhpBinAutoDiscoversPhpCommand()
     {
+        $php     = exec('which php');
         $options = new ServiceOptions();
-        $this->assertEquals($_SERVER['PHP_COMMAND'], $options->getPhpBin());
+        $this->assertEquals($php, $options->getPhpBin());
     }
 
     public function testSetPhingBinViaConstructor()
