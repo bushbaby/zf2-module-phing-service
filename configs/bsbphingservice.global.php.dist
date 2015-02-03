@@ -10,8 +10,8 @@
  * Configuration service
  */
 $serviceOptions = array(
-    'phpBin'    => null, /* null will attempt to auto-detection via exec 'which php' */
-    'phingPath' => null, /* will assume composer installation and attempt auto detect */
+    'phpBin'    => null, /* null will attempt auto detection */
+    'phingBin'  => null, /* null will attempt auto-detection, defaults to ./vendor/bin/phing */
 );
 
 /**

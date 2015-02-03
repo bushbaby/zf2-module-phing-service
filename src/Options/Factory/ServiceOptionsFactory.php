@@ -4,7 +4,7 @@ namespace BsbPhingService\Options\Factory;
 
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use BsbPhingService\Options\Service as ServiceOptions;
+use BsbPhingService\Options\ServiceOptions;
 
 class ServiceOptionsFactory implements FactoryInterface
 {
@@ -16,10 +16,9 @@ class ServiceOptionsFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-
-        $config = $serviceLocator->get('config');
-
-        $service = new ServiceOptions($config['bsbphingservice']['service']);
+        $config  = $serviceLocator->get('config');
+        $config  = isset($config['bsbphingservice']['service']) ? $config['bsbphingservice']['service'] : array();
+        $service = new ServiceOptions($config);
 
         return $service;
     }

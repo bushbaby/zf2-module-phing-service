@@ -2,7 +2,6 @@
 
 namespace BsbPhingServiceTest;
 
-
 use BsbPhingService\Module;
 
 class ModuleTest extends \PHPUnit_Framework_TestCase

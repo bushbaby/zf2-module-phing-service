@@ -14,17 +14,14 @@
     span.phing_info {
         color: #8c8b32;
     }
-/*    const CLASS_ERR     = '';
-    const CLASS_VERBOSE = 'phing_verbose';
-    const CLASS_DEBUG   = 'phing_debug';
-    const CLASS_WARN    = 'phing_warn';
-    const CLASS_INFO    = 'phing_info';*/
-
 </style>
 
 <strong>command </strong>
-<pre><?php echo $this->command; ?></pre>
+<pre><?php echo $this->process->getCommandLine(); ?></pre>
 <strong>returnStatus</strong>
-<pre><?php echo $this->returnStatus; ?></pre>
+<pre><?php echo $this->process->getExitCodeText(); ?></pre>
 <strong>output </strong>
-<pre><?php echo $this->output; ?></pre>
+<pre><?php echo $this->process->getOutput(); ?></pre>
+<strong>error output </strong>
+<pre><?php echo $this->process->getErrorOutput(); ?></pre>
+

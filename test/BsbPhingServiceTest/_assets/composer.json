@@ -1,0 +1,4 @@
+{
+  "description": "This composer.json is here for testing auto dicovery functionality.",
+  "bin-dir": "./foo/bar"
+}

@@ -2,9 +2,9 @@
 
 namespace BsbPhingService\Options\Factory;
 
+use BsbPhingService\Options\PhingOptions;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
-use BsbPhingService\Options\Phing as PhingOptions;
 
 class PhingOptionsFactory implements FactoryInterface
 {
@@ -16,10 +16,9 @@ class PhingOptionsFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
-
-        $config = $serviceLocator->get('config');
-
-        $service = new PhingOptions($config['bsbphingservice']['phing']);
+        $config  = $serviceLocator->get('config');
+        $config  = isset($config['bsbphingservice']['phing']) ? $config['bsbphingservice']['phing'] : array();
+        $service = new PhingOptions($config);
 
         return $service;
     }

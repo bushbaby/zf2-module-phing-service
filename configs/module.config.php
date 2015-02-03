@@ -3,8 +3,8 @@
 return array(
     'bsbphingservice' => array(
         'service' => array(
-            'phpBin'    => null, /* will attempt auto-detection via exec 'which php' */
-            'phingPath' => null, /* will assume composer installation and attempt auto detect */
+            'phpBin'    => null, /* will attempt auto-detection */
+            'phingBin'  => null, /* will attempt auto-detection, defaults to ./vendor/bin/phing */
         ),
         'phing'   => array(),
     ),
@@ -20,7 +20,7 @@ return array(
     ),
     'service_manager' => array(
         'factories' => array(
-            'BsbPhingService'                => 'BsbPhingService\Service\Factory\PhingFactory',
+            'BsbPhingService'                => 'BsbPhingService\Service\Factory\PhingServiceFactory',
             'BsbPhingService.serviceOptions' => 'BsbPhingService\Options\Factory\PhingServiceFactory',
             'BsbPhingService.phingOptions'   => 'BsbPhingService\Options\Factory\PhingOptionsFactory',
         ),
