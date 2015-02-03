@@ -2,7 +2,7 @@
   "name": "bushbaby/zf2-module-phing-service",
   "description": "Zend Framework 2 module for Phing, a PHP project build system or build tool based on Apache Ant.",
   "license": "MIT",
-  "homepage": "https://github.com/basz/zf2-module-phing-service",
+  "homepage": "https://github.com/bushbaby/zf2-module-phing-service",
   "authors": [
     {
       "name": "Bas Kamer",

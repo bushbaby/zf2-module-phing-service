@@ -18,10 +18,10 @@ BsbPhingService is module for Zend Framework 2 that will enable you to execute
 [![Latest Unstable Version](https://poser.pugx.org/bushbaby/zf2-module-phing-service/v/unstable.svg)](https://packagist.org/packages/bushbaby/zf2-module-phing-service)
 [![License](https://poser.pugx.org/bushbaby/zf2-module-phing-service/license.svg)](https://packagist.org/packages/bushbaby/zf2-module-phing-service)
 
-[![Build Status](https://scrutinizer-ci.com/g/basz/zf2-module-phing-service/badges/build.png?b=master)]([![Build Status](https://travis-ci.org/basz/zf2-module-phing-service.svg?branch=master)](https://travis-ci.org/basz/zf2-module-phing-service))
-[![Code Coverage](https://scrutinizer-ci.com/g/basz/zf2-module-phing-service/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/basz/zf2-module-phing-service/?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/basz/zf2-module-phing-service/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/basz/zf2-module-phing-service/?branch=master)
-[![Dependency Status](https://www.versioneye.com/user/projects/54cb8adade7924d4b00002ab/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54cb8adade7924d4b00002ab)
+[![Build Status](https://scrutinizer-ci.com/g/bushbaby/zf2-module-phing-service/badges/build.png?b=master)]([![Build Status](https://travis-ci.org/bushbaby/zf2-module-phing-service.svg?branch=master)](https://travis-ci.org/bushbaby/zf2-module-phing-service))
+[![Code Coverage](https://scrutinizer-ci.com/g/bushbaby/zf2-module-phing-service/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/bushbaby/zf2-module-phing-service/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bushbaby/zf2-module-phing-service/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bushbaby/zf2-module-phing-service/?branch=master)
+[![Dependency Status](https://www.versioneye.com/user/projects/54d1318b3ca08495310000c6/badge.svg?style=flat)](https://www.versioneye.com/user/projects/54d1318b3ca08495310000c6)
 
 ---
 
