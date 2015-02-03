@@ -57,7 +57,7 @@ class PhingService
      *
      * @return Process
      */
-    public function build($target = "", $options = null, $immediate = true)
+    public function build($targets = "", $options = null, $immediate = true)
     {
         $phingOptions = clone $this->phingOptions;
 
@@ -65,7 +65,7 @@ class PhingService
             $phingOptions->setFromArray($options);
         }
 
-        $process = $this->createProcessInstance($target, $phingOptions);
+        $process = $this->createProcessInstance($targets, $phingOptions);
 
         if ($immediate) {
             $process->run();
