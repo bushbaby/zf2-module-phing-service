@@ -1,6 +1,6 @@
 # CHANGELOG
 
-v2.0.0-dev
+v2.0.0
 
 - Rely on composer for autoloading (PSR4) (possible BC)
 - config key phingPath is now phingBin (possible BC)

@@ -89,16 +89,16 @@ every controller so retrieval is trivial.
 
         $buildResult = $this->getServiceLocator()->get('BsbPhingService')->build('show-defaults dist', $options);
 
-        if ($buildResult['returnStatus'] > 0) {
+        if ($buildResult->getExitCode() > 0) {
       	    // problem
-            echo $buildResult['command'];
-            echo $buildResult['output'];
+            echo $buildResult->getCommandline();
+            echo $buildResult->getErrorOutput();
         } else {
             // yeah
-            echo $buildResult['output'];
+            echo $buildResult->getOutput();
         }
 
-        $view = new ViewModel($buildResult);
+        $view = new ViewModel(array('process'=>$buildResult));
 
         return $view;
     }
